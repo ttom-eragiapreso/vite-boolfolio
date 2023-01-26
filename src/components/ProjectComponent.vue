@@ -2,15 +2,14 @@
 export default {
   name: 'ProjectComponent',
   props: {
-    project: Object,
-    links: Array
+    project: Object
   }
 }
 </script>
 
 
 <template>
-  <div class="col">
+
 
     <div class="card">
     <img :src="project.cover_image" class="card-img-top" :alt="project.name">
@@ -20,7 +19,7 @@ export default {
       <p class="card-text">{{ project.summary }}</p>
     </div>
   </div>
-  </div>
+
 </template>
 
 

@@ -12,7 +12,9 @@ export default {
       Apiurl: 'http://127.0.0.1:8000/api/projects',
       data: [],
       pagination: [],
-      links: []
+      links: [],
+      current_page: null,
+      last_page: null
     }
   },
   methods: {
@@ -21,6 +23,8 @@ export default {
         .then(response => {
           this.data = response.data.projects.data
           this.links = response.data.projects.links
+          this.current_page = response.data.projects.current_page
+          this.last_page = response.data.projects.last_page
         })
         .catch(error => {console.log(error)})
     }
@@ -33,7 +37,7 @@ export default {
 
 <template>
 
-  <h2>Questo è l'app principale</h2>
+  <h2>Sei alla pagina {{ this.current_page }} di {{ this.last_page }}</h2>
 
   <div class="container">
     <div class="row row-cols-3">
