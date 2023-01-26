@@ -21,7 +21,6 @@ export default {
         .then(response => {
           this.data = response.data.projects.data
           this.links = response.data.projects.links
-          console.log(this.data, this.links)
         })
         .catch(error => {console.log(error)})
     }
@@ -36,8 +35,19 @@ export default {
 
   <h2>Questo è l'app principale</h2>
 
+  <div class="container">
+    <div class="row row-cols-3">
+      <project v-for="project in this.data" :key="project.id" :project="project" />
 
-  <project v-for="project in this.data" :key="project.id" :project="project" :links="this.links"/>
+    </div>
+  </div>
+
+  <button v-for="(link, index) in this.links" 
+    :key="index" 
+    v-html="link.label" 
+    :disabled="link.active || !link.url"
+    @click="this.ApiCall(link.url)"
+    ></button>
   
 </template>
 
