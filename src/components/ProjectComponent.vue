@@ -14,7 +14,7 @@ export default {
     <div class="card">
     <img :src="project.cover_image" class="card-img-top" :alt="project.name">
     <div class="card-body">
-      <h5 class="card-title">{{ project.name }}</h5>
+      <h5 class="card-title"> <router-link :to="{name: 'detail', params: {'slug' : project.slug}}">{{ project.name }}</router-link></h5>
       <h5 class="card-title">{{ project.id }}</h5>
       <p class="card-text">{{ project.summary }}</p>
     </div>
@@ -24,5 +24,5 @@ export default {
 
 
 <style lang="scss" scoped>
-  
+
 </style>
