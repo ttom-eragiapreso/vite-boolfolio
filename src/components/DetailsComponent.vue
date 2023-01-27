@@ -31,6 +31,13 @@ export default {
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{ project.name }}</h5>
+        <h5 class="card-title text-success" v-if="project.type">{{ project.type.name }}</h5>
+        <div class="card-title" v-if="project.technologies">
+          <h5 class="card-title">Technologies</h5>
+          <ul>
+            <li v-for="tech in project.technologies" :key="tech.id">{{ tech.name }}</li>
+          </ul>
+        </div>
         <p class="card-text">{{ project.summary }}</p>
         <p class="card-text"><small class="text-muted">{{ project.client_name }}</small></p>
       </div>
