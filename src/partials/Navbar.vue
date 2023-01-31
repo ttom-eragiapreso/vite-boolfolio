@@ -11,6 +11,9 @@ export default {
       <li>
         <router-link :to="{name: 'home'}">Home</router-link>
       </li>
+      <li>
+        <router-link :to="{name: 'contact'}">Contact Us</router-link>
+      </li>
     </ul>
   </nav>
 
