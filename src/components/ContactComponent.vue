@@ -6,7 +6,8 @@ export default {
       name: '',
       email: '',
       message: '',
-      url: 'http://127.0.0.1:8000/api/contact'
+      url: 'http://127.0.0.1:8000/api/contact',
+      canSend: true
     }
   },
   methods: {
@@ -20,10 +21,12 @@ export default {
 
       axios.post(this.url, data)
         .then((response) => {
+          this.canSend = false
           this.name = ''
           this.email = ''
           this.message = ''
         })
+        .finally(() => {this.canSend = true})
 
 
     }
@@ -49,7 +52,7 @@ export default {
         <textarea id="message" cols="30" rows="10" placeholder="Inserisci il tuo messaggio" v-model="message"></textarea>
       </div>
     </div>
-    <button type="submit">Invia</button>
+    <button type="submit" :disabled="!canSend">Invia</button>
   </form>
   
   
